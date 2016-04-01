@@ -27,10 +27,6 @@ class Helpers
      */
     public static function isHHVM()
     {
-        static $isH;
-        if ($isH === null) {
-            $isH = (strpos(strtolower(PHP_VERSION), 'hiphop') !== false);
-        }
-        return $isH;
+        return defined('HHVM_VERSION');
     }
 }
