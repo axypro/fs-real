@@ -14,6 +14,7 @@ use axy\fs\real\errors\FSError;
  *
  * @SuppressWarnings(PHPMD.TooManyPublicMethods)
  * @SuppressWarnings(PHPMD.ExcessivePublicCount)
+ * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
  */
 class FSTest extends \PHPUnit_Framework_TestCase
 {
@@ -276,8 +277,12 @@ class FSTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('test content', file_get_contents($fnDest));
         unlink($fnSrc);
         unlink($fnDest);
-        $this->setExpectedException('axy\fs\ifs\errors\FSError');
-        $this->fs->copy($fnSrc, $fnDest);
+        if (Helpers::isHHVM()) {
+            $this->markTestSkipped('HHVM');
+        } else {
+            $this->setExpectedException('axy\fs\ifs\errors\FSError');
+            $this->fs->copy($fnSrc, $fnDest);
+        }
     }
 
     /**
@@ -673,9 +678,14 @@ class FSTest extends \PHPUnit_Framework_TestCase
         $file->setPosition(1);
         $this->assertSame('ont', $file->read(3));
         $meta = $file->getMetaData();
-        $this->assertFileExists($meta->filename);
-        $file->close();
-        $this->assertFileNotExists($meta->filename);
+        if (Helpers::isHHVM()) {
+            $file->close();
+            $this->markTestSkipped('HHVM');
+        } else {
+            $this->assertFileExists($meta->filename);
+            $file->close();
+            $this->assertFileNotExists($meta->filename);
+        }
     }
 
     /**

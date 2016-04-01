@@ -21,4 +21,16 @@ class Helpers
             }
         }
     }
+
+    /**
+     * @return bool
+     */
+    public static function isHHVM()
+    {
+        static $isH;
+        if ($isH === null) {
+            $isH = (strpos(strtolower(PHP_VERSION), 'hiphop') !== false);
+        }
+        return $isH;
+    }
 }

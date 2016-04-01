@@ -243,8 +243,12 @@ class RealFileTest extends \PHPUnit_Framework_TestCase
         $this->assertSame($fn, $meta->filename);
         $this->assertSame("rt", $meta->mode);
         $this->assertSame(false, $meta->eof);
-        $this->setExpectedException('axy\fs\real\errors\FSError');
-        $file->getMetaData();
+        if (Helpers::isHHVM()) {
+            $this->markTestSkipped('HHVM');
+        } else {
+            $this->setExpectedException('axy\fs\real\errors\FSError');
+            $file->getMetaData();
+        }
     }
 
     public function testLockNot()
