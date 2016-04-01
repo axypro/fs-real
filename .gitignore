@@ -1,0 +1,5 @@
+composer.lock
+vendor
+.idea
+tests/tmp/*
+!tests/tmp/.gitkeep

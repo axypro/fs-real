@@ -1,0 +1,31 @@
+{
+    "name": "axy/fs-real",
+    "type": "library",
+    "description": "File system access",
+    "keywords": [
+        "File system",
+        "File",
+        "Directory"
+    ],
+    "homepage": "https://github.com/axypro/fs-real",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Oleg Grigoriev",
+            "email": "go.vasac@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "axy/fs-ifs": "~0.0.1",
+        "axy/errors": "~1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "axy\\fs\\real\\": ""
+        }
+    },
+    "archive": {
+        "exclude": ["/tests/*", "/doc/*", "/cs.sh", "/phpmd.sh", "/*.xml.dist", "/CHANGELOG.md"]
+    }
+}
