@@ -199,7 +199,7 @@ class FS implements IFS
     public function changeGroup($filename, $group)
     {
         ECatcher::start($filename);
-        chown($filename, $group);
+        chgrp($filename, $group);
         ECatcher::stop();
     }
 
