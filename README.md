@@ -14,3 +14,25 @@ Real implementation of [axy/fs/ifs](https://github.com/axypro/fs-ifs).
 * Tested on PHP 5.4+, PHP 7, HHVM (on Linux), PHP 5.5 (on Windows).
 * Install: `composer require axy/fs-real`.
 * License: [MIT](LICENSE).
+
+## Documentation
+
+It is an implementation of interfaces from [axy/fs-ifs](https://github.com/axypro/fs-ifs).
+This implementation works with the real file system.
+
+The class `FS` is implementation of `axy\fs\ifs\IFS`.
+
+`FS::open()` returns an instance of `RealFile` class that is implementation of `axy\fs\ifs\IFile`.
+
+Messages of the `FSError` exception are similar build-in functions WARNINGs.
+
+## Bugs
+
+The library successfully tested on PHP 5.4, 5.5, 5.5 and 7.0 via travis-ci.org.
+
+For HHVM there are several little bugs:
+
+* `copy()` does not throw exception if the source does not exist.
+* `$file->getMetaData()` for closed `$file` does not throw an exception.
+* If create a file using `createTempFile()` and gets meta data using `$file->getMetaData()` then the file `meta->filename` does not exists.
+
