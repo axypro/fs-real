@@ -171,17 +171,7 @@ class RealFile implements IFile
         ftruncate($this->handle, $size);
         ECatcher::stop();
     }
-
-    /**
-     * @var resource
-     */
-    private $handle;
-
-    /**
-     * @var string
-     */
-    private $filename;
-
+    
     /**
      * {@inheritdoc}
      */
@@ -192,4 +182,14 @@ class RealFile implements IFile
         ECatcher::stop();
         return new MetaData($result);
     }
+
+    /**
+     * @var resource
+     */
+    private $handle;
+
+    /**
+     * @var string
+     */
+    private $filename;
 }
