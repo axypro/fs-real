@@ -28,7 +28,6 @@ class FSTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        var_dump(umask());
         $this->fs = new FS();
         $this->tmp = __DIR__.'/'.self::TMP_DIR;
         clearstatcache(true);
@@ -325,7 +324,8 @@ class FSTest extends \PHPUnit_Framework_TestCase
         $dirB = $dirA.'/nested';
         $this->fs->makeDir($dirA);
         $this->assertTrue(is_dir($dirA));
-        $this->assertSame(070, fileperms($dirA) & 070);
+        $umask = umask();
+        $this->assertSame(070, fileperms($dirA) & 070 & (~$umask));
         rmdir($dirA);
         $this->fs->makeDir($dirB, 0730, true);
         $this->assertTrue(is_dir($dirA));
