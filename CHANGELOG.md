@@ -1,3 +1,7 @@
+### dev
+
+* Travis: PHP 7.1
+
 ### 0.0.2 (02.04.2016)
 
 * Fixed #4: changeGroup() changes owner instead group
