@@ -28,7 +28,7 @@ class FSTest extends \PHPUnit_Framework_TestCase
      */
     public function setUp()
     {
-        umask(0777);
+        var_dump(umask());
         $this->fs = new FS();
         $this->tmp = __DIR__.'/'.self::TMP_DIR;
         clearstatcache(true);
