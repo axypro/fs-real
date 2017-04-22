@@ -1,6 +1,7 @@
 ### dev
 
 * Travis: PHP 7.1
+* Travis: fix test and umask
 
 ### 0.0.2 (02.04.2016)
 
