@@ -17,8 +17,11 @@
     ],
     "require": {
         "php": ">=5.4.0",
-        "axy/fs-ifs": "~0.0.1",
+        "axy/fs-ifs": "~0.0.3",
         "axy/errors": "~1.0"
+    },
+    "provide": {
+        "axy/fs-ifs-implementation": "0.0.3"
     },
     "autoload": {
         "psr-4": {
