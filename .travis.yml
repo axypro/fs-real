@@ -53,6 +53,9 @@ install:
     fi;
 
 script:
+  - echo "umask" && umask
+  - umask 002
+  - echo "new umask" && umask
   # Normal run - only phpunit
   - if [ ! "$CHECKS" = "yes" ]; then $PU; fi;
   # Run with checks

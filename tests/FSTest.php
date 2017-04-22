@@ -324,8 +324,7 @@ class FSTest extends \PHPUnit_Framework_TestCase
         $dirB = $dirA.'/nested';
         $this->fs->makeDir($dirA);
         $this->assertTrue(is_dir($dirA));
-        $umask = umask();
-        $this->assertSame(070, fileperms($dirA) & 070 & (~$umask));
+        $this->assertSame(070, fileperms($dirA) & 070);
         rmdir($dirA);
         $this->fs->makeDir($dirB, 0730, true);
         $this->assertTrue(is_dir($dirA));
